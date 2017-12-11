@@ -2,6 +2,6 @@
 
 Repositório da Aplicação alpha-blog
 
-Utilizando o Curso The Complete Ruby on Rais
+Utilizando o Curso The Complete Ruby on Rails
 
 ***************************************************************
