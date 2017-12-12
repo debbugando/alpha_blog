@@ -24,9 +24,7 @@ test:
 #  <<: *default
 #  database: db/production.sqlite3
 production:
-  #adapter: postgresql
-  #host: ec2-54-243-211-197.compute-1.amazonaws.com
-  #username: vnceuawnruonhk
-  #database: d66lvec8sbelv2
-  encoding: utf8
-  pool: 15
+  <<: *default
+  database: d66lvec8sbelv2
+  username: vnceuawnruonhk
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
