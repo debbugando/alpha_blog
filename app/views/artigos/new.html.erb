@@ -1,0 +1,22 @@
+<h1>Criação de Artigo</h1>
+<% if @artigo.errors.any? %>
+<h3>O Formulário apresentou o seguinte(s) erro(s):</h3>
+<% @artigo.errors.full_messages.each do |msg| %>
+  <ul>
+    <li><%= msg %></li>
+  </ul>
+<% end %>
+<% end %>
+<%= form_for @artigo do |form| %>
+  <p>
+    <%= form.label :titulo, 'Título' %><br/>
+    <%= form.text_field :titulo %>
+  </p>
+  <p>
+    <%= form.label :descricao, 'Descrição' %><br/>
+    <%= form.text_area :descricao %>
+  </p>
+  <p>
+    <%= form.submit 'Salvar'%>
+  </p>
+<% end %>

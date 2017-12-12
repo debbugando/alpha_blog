@@ -55,4 +55,5 @@ Rails.application.routes.draw do
   #   end
   root 'pages#home'
   get 'sobre', to: 'pages#sobre'
+  resources :artigos
 end
