@@ -1,1 +1,20 @@
-<h1>Essa é a nossa Home =)</h1>
+<h1>Listagem de Artigos</h1>
+<p>
+  <%= link_to "Criar Artigo", new_artigo_path %>
+</p>
+<table border="1">
+  <tr>
+    <th>Titulo</th>
+    <th>Descrição</th>
+    <th>Ação</th>
+    <th>Exibir</th>
+  </tr>
+  <% @artigos.each do |artigo|%>
+  <tr>
+    <td><%= artigo.titulo %></td>
+    <td><%= artigo.descricao %></td>
+    <td><%= link_to "Editar", edit_artigo_path(artigo) %></td>
+    <td><%= link_to "Exibir", artigo_path(artigo) %></td>
+  </tr>
+  <% end %>
+</table>

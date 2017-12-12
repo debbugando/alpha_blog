@@ -1,9 +1,10 @@
 class ArtigosController < ApplicationController
   def index
+    @artigos = Artigo.all
   end
   
   def new
-    @artigo = Artigo.new()
+    @artigo = Artigo.new
   end
   
   def create
@@ -12,12 +13,6 @@ class ArtigosController < ApplicationController
     #Recebe os valores e valida
     @artigo = Artigo.new(artigo_params)
     #Salva os dados
-    #Abordagem simples
-    #@artigo.save
-    #Redireciona
-    #redirect_to artigos_show(@artigo)
-    
-    #Segunda Abordagem
     if @artigo.save
       #Mensagem de Sucesso
       flash[:notice] = "Artigo Salvo com Sucesso!"
@@ -25,6 +20,21 @@ class ArtigosController < ApplicationController
       redirect_to artigo_path(@artigo)
     else
       render "new"
+    end
+  end
+  
+  def edit
+    @artigo = Artigo.find(params[:id])
+  end
+  
+  def update
+    @artigo = Artigo.find(params[:id])
+    if @artigo.update(artigo_params)
+      flash[:notice] = "Artigo Editado com Sucesso!"
+      redirect_to artigo_path(@artigo)
+    else
+      flash[:notice] = "Erro ao Editar Artigo."
+      render 'edit'
     end
   end
   
