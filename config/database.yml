@@ -23,8 +23,8 @@ test:
 #production:
 #  <<: *default
 #  database: db/production.sqlite3
-development:
+production:
   adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
+  host: ec2-54-243-211-197.compute-1.amazonaws.com
+  username: vnceuawnruonhk
+  database: d66lvec8sbelv2
