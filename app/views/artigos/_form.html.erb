@@ -1,11 +1,4 @@
-<% if @artigo.errors.any? %>
-<h3>O Formulário apresentou o seguinte(s) erro(s):</h3>
-<% @artigo.errors.full_messages.each do |msg| %>
-  <ul>
-    <li><%= msg %></li>
-  </ul>
-<% end %>
-<% end %>
+<%= render "shared/errors", obj: @artigo %>
 <div class="row">
   <div class="col-xs-12">
   <%= form_for( @artigo, :html => {class: "form-horizontal", role: "form" }) do |form| %>
