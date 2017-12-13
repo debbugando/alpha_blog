@@ -33,13 +33,19 @@ class ArtigosController < ApplicationController
       flash[:notice] = "Artigo Editado com Sucesso!"
       redirect_to artigo_path(@artigo)
     else
-      flash[:notice] = "Erro ao Editar Artigo."
       render 'edit'
     end
   end
   
   def show
     @artigo = Artigo.find(params[:id])
+  end
+  
+  def destroy
+    @artigo = Artigo.find(params[:id])
+    @artigo.destroy
+    flash[:notice] = "Artigo Removido com Sucesso!"
+    redirect_to artigos_path()
   end
   
   private
