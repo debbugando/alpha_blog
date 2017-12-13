@@ -1,9 +1,16 @@
-<h1>Artigo <%= @artigo.id %></h1>
-<p>
-  Titulo: <%= @artigo.titulo %>
-</p>
-<p>
-  Descrição: <%= @artigo.descricao %>
-</p>
-<%= link_to "Editar", edit_artigo_path(@artigo) %>
-<%= link_to "Voltar", artigos_path %>
+<h2 class="center">Título <%= @artigo.titulo %></h2>
+<div class="well col-xs-8 col-xs-offset-2">
+  <h4 class="center descricao">
+    <strong>Descrição:</strong>
+  </h4>
+  <hr>
+  <%= simple_format(@artigo.descricao) %>
+  <div class="artigo-actions">
+    <%= link_to "Editar", edit_artigo_path(@artigo), class: "btn btn-xs btn-primary" %>
+    <%= link_to "Remover", artigo_path(@artigo), 
+                              method: :delete, 
+                              data: { confirm: "Deseja remover?" }, 
+                              class: "btn btn-xs btn-danger" %>
+    <%= link_to "Voltar", artigos_path, class: "btn btn-xs btn-success" %>
+  </div>
+</div>
