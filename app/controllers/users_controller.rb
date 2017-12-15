@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def show
+    @user = User.find(params[:id])
+  end
+  
   private
   #Dados permitidos no parâmetro do objeto user
   def user_params
