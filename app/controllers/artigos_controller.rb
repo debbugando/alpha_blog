@@ -17,6 +17,7 @@ class ArtigosController < ApplicationController
     #render plain: params[:artigo].inspect
     #Recebe os valores e valida
     @artigo = Artigo.new(artigo_params)
+    @artigo.user_id = session[:user_id]
     #Salva os dados
     if @artigo.save
       #Mensagem de Sucesso
