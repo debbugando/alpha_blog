@@ -18,11 +18,13 @@
   <hr>
   <%= simple_format(@artigo.descricao) %>
   <div class="artigo-actions">
+    <% if logged_in? && current_user == @artigo.user %>
     <%= link_to "Editar", edit_artigo_path(@artigo), class: "btn btn-xs btn-primary" %>
     <%= link_to "Remover", artigo_path(@artigo), 
                               method: :delete, 
                               data: { confirm: "Deseja remover?" }, 
                               class: "btn btn-xs btn-danger" %>
+    <% end %>
     <%= link_to "Voltar", artigos_path, class: "btn btn-xs btn-success" %>
   </div>
 </div>

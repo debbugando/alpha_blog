@@ -25,6 +25,8 @@
 .jumbotron{
   background-image: asset-url('ruby-on-rails.png');
   background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
   height: 550px;
 }
 

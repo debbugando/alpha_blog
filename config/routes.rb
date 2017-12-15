@@ -59,6 +59,10 @@ Rails.application.routes.draw do
   get 'sobre', to: 'pages#sobre'
   #Criação de usuário
   get 'signup', to: 'users#new'
+  #Rotas para o login e logout
+  get 'login',     to: 'sessions#new'
+  post 'login',    to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   #Cria rotas para a classe Users exceto a new que já foi atribuida acima
   resources :users , except: [:new]
   #Cria a rota da classe Artigos
