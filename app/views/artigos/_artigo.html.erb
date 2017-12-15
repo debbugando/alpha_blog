@@ -1,28 +1,29 @@
 <% if obj %>
+
   <% obj.each do |artigo|%>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <div class="well well-lg">
-        <div class="artigo-titulo">
-          <%= link_to artigo.titulo, artigo_path(artigo) %>
-        </div>
-        <div class="artigo-body">
-          <%= truncate(artigo.descricao, length: 100) %>
-          <div class="artigo-meta-detalhe">
-            <small>Criado por: <%= artigo.user.username+" "+time_ago_in_words(artigo.created_at) %> Atr&aacute;s</small>
+        <div class="well well-lg">
+          <div class="artigo-titulo">
+            <%= link_to artigo.titulo, artigo_path(artigo) %>
           </div>
-        </div>
-        <% if logged_in? && current_user == artigo.user %>
-        <div class="artigo-actions">
-          <%= link_to "Editar", edit_artigo_path(artigo), class: "btn btn-xs btn-primary" %>
-          <%= link_to "Remover", artigo_path(artigo), 
-                                    method: :delete, 
-                                    data: { confirm: "Deseja remover?" }, 
-                                    class: "btn btn-xs btn-danger" %>
-        <% end %>
+          <div class="artigo-body">
+            <%= truncate(artigo.descricao, length: 100) %>
+            <div class="artigo-meta-detalhe">
+              <small>Criado por: <%= artigo.user.username+" "+time_ago_in_words(artigo.created_at) %> Atr&aacute;s</small>
+            </div>
+          </div>
+          <% if logged_in? && current_user == artigo.user %>
+          <div class="artigo-actions">
+            <%= link_to "Editar", edit_artigo_path(artigo), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Remover", artigo_path(artigo), 
+                                      method: :delete, 
+                                      data: { confirm: "Deseja remover?" }, 
+                                      class: "btn btn-xs btn-danger" %>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 <% end %>

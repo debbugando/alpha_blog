@@ -4,10 +4,12 @@
   <ul class="listagem">
       <div class="row">
         <div class="col-md-4 col-md-offset-4 center">
+          <% if @artigo.user %>
           <li>Criado por:</li>
           <li><%= link_to gravatar_for(@artigo.user), user_path(@artigo.user) %></li>
           <li class="artigo-titulo"><%= link_to @artigo.user.username, user_path(@artigo.user) %></li>
           <li><small><%= pluralize(@artigo.user.artigos.count, "Artigo") if @artigo.user.artigos %></small></li>
+          <% end %>
         </div>
       </div>
     </ul>
