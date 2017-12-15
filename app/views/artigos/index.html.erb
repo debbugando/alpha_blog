@@ -8,6 +8,8 @@
       </div>
       <div class="artigo-body">
         <%= truncate(artigo.descricao, length: 100) %>
+        <small>Criado por: <%= artigo.user.username+" "+time_ago_in_words(artigo.created_at) %>
+        </small>
       </div>
       <div class="artigo-actions">
         <%= link_to "Editar", edit_artigo_path(artigo), class: "btn btn-xs btn-primary" %>
