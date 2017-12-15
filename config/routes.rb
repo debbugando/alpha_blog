@@ -53,7 +53,14 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  #Home da aplicação
   root 'pages#home'
+  #Página sobre
   get 'sobre', to: 'pages#sobre'
+  #Criação de usuário
+  get 'signup', to: 'users#new'
+  #Cria rotas para a classe Users exceto a new que já foi atribuida acima
+  resources :users , except: [:new]
+  #Cria a rota da classe Artigos
   resources :artigos
 end
