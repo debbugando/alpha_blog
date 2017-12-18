@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   #Relaciona a classe user com artigos, atribuindo 1..n
-  has_many :artigos
+  #Caso ocorra exclusão, removerá todos os artigos daquele usuário
+  has_many :artigos, dependent: :destroy
   #Antes de salvar coloca a string do e-mail em minusculo
   before_save { self.email = email.downcase }
   #Validação dos dados

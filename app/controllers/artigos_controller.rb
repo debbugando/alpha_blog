@@ -59,7 +59,7 @@ class ArtigosController < ApplicationController
   end
   
   def require_same_user
-    if current_user != @artigo.user
+    if current_user != @artigo.user && !current_user.admin?
       flash[:danger] = "Ação Negada, Usuário sem Permissão."
       redirect_to root_path
     end
