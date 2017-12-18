@@ -67,4 +67,6 @@ Rails.application.routes.draw do
   resources :users , except: [:new]
   #Cria a rota da classe Artigos
   resources :artigos
+  #Cria a rota da classe Categorias
+  resources :categorias, except: [:destroy]
 end
