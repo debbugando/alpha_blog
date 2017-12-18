@@ -4,6 +4,7 @@ class CategoriasControllerTest < ActionController::TestCase
   #CONFIGURA E CRIA A CATEGORIA
   def setup
     @categoria = Categoria.create( nome: "humor")
+    @user = User.create( username: "Bileh Teste", email: "bileh_teste@email.com", password: "password", admin: true)
   end
   
   #TESTA A ROTA DO INDEX
@@ -14,6 +15,8 @@ class CategoriasControllerTest < ActionController::TestCase
   
   #TESTA A ROTA DE CRIAÇÃO
   test "Rota get new" do
+    #Essa informação somente no Rails 4, no 5 muda bastante
+    session[:user_id] = @user.id
     get :new
     assert_response :success
   end
@@ -23,5 +26,12 @@ class CategoriasControllerTest < ActionController::TestCase
   test "Rota get show" do
     get(:show, { 'id' => @categoria.id } )
     assert_response :success
+  end
+  
+  test "redireciona criacao quando nao for admin" do
+    assert_no_difference 'Categoria.count' do
+      post :create, categoria: { nome: "Gordice" }
+    end
+    assert_redirected_to categorias_path
   end
 end
