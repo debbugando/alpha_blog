@@ -8,7 +8,7 @@
           <li><%= link_to gravatar_for(user), user_path(user) %></li>
           <li class="artigo-titulo"><%= link_to user.username, user_path(user) %></li>
           <li><small><%= pluralize(user.artigos.count, "Artigo") if user.artigos %></small></li>
-          <% if logged_in? || current_user.admin? %>
+          <% if logged_in? && current_user.admin? %>
           <li><%= link_to "Remover Usuário", user_path(user), method: :delete, data: { confirm: "Deseja Remover Usuário e seus Artigos?" } %></li>
           <% end %>
         </div>
