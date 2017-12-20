@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class CreateCategoriasTest < ActionDispatch::IntegrationTest
+  def setup
+    @user = User.create(username: "BilehTeste", email: "bileh_teste@email.com", password: "password", admin: true)
+  end
+  
   #Teste para inserção de Dados Válidos
   test "get formulário nova categoria e cria categoria" do
+    #Simulando login
+    sign_in_as(@user, "password")
     #Começa o teste indo para a rota de criação da Categoria
     get new_categoria_path
     #Exibe o template
@@ -12,6 +18,7 @@ class CreateCategoriasTest < ActionDispatch::IntegrationTest
       #Insere nova categoria
       post_via_redirect categorias_path, categoria: { nome: "sports"}
     end
+    
     #Retorna para o index da Categoria
     assert_template "categorias/index"
     #Verifica se o valor inserido acima retorna na view
@@ -20,6 +27,9 @@ class CreateCategoriasTest < ActionDispatch::IntegrationTest
   
   #Teste para inserção de Dados Inválidos
   test "envio de categoria invalida resulta em falha" do
+    #Simulando login
+    sign_in_as(@user, "password")
+    
     #Começa o teste indo para a rota de criação da Categoria
     get new_categoria_path
     #Exibe o template
@@ -29,6 +39,7 @@ class CreateCategoriasTest < ActionDispatch::IntegrationTest
       #Insere nova categoria em branco
       post categorias_path, categoria: { nome: " "}
     end
+    
     #Retorna para o template de criação da Categoria
     assert_template "categorias/new"
     #Verifica se os elementos abaixo estão na view

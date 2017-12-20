@@ -3,7 +3,9 @@ require 'test_helper'
 class CategoriasControllerTest < ActionController::TestCase
   #CONFIGURA E CRIA A CATEGORIA
   def setup
+    #Cria uma categoria
     @categoria = Categoria.create( nome: "humor")
+    #Cria usuário para simular admin
     @user = User.create( username: "Bileh Teste", email: "bileh_teste@email.com", password: "password", admin: true)
   end
   
