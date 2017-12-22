@@ -8,6 +8,7 @@
         <li class="artigo-titulo">
           <%= link_to "#{categoria.nome}", categoria_path(categoria) %>
         </li>
+        <li><small><%= pluralize(categoria.artigos.count, "Artigo") %></small></li>
       </div>
     </div>
   </ul>

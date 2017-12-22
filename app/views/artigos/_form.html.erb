@@ -20,6 +20,13 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
+        <%= form.collection_check_boxes :categoria_ids, Categoria.all, :id, :nome do |cb| %>
+          <% cb.label(class: "checkbox-inline input_checkbox") { cb.check_box( class: "checkbox") + cb.text } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
         <%= form.submit 'Salvar', class: "btn btn-primary btn-lg" %>
         <%= link_to "Cancelar", artigos_path, class: "btn btn-default btn-lg" %>
       </div>

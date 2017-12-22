@@ -69,4 +69,5 @@ Rails.application.routes.draw do
   resources :artigos
   #Cria a rota da classe Categorias
   resources :categorias, except: [:destroy]
+  get 'categorias/[:id]',     to: 'categorias#show'
 end

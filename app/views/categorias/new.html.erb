@@ -1,19 +1,2 @@
 <h1 class="center">Cria nova Categoria</h1>
-
-<%= render "shared/errors", obj: @categoria %>
-<%= form_for( @categoria, :html => {class: "form-horizontal", role: "form" }) do |form| %>
-  <div class="form-group">
-    <div class="control-label col-sm-2">
-      <%= form.label :nome, 'Categoria' %>
-    </div>
-    <div class="control-label col-sm-8">
-      <%= form.text_field :nome, class: "form-control", placeholder: "Categoria", autofocus: true %>  
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit "Salvar", class: "btn btn-primary btn-lg" %>
-      <%= link_to "Cancelar", categorias_path, class: "btn btn-default btn-lg" %>
-    </div>
-  </div>
-<% end %>
+<%= render 'form' %>

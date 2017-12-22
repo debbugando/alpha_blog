@@ -13,6 +13,10 @@
               <small>Criado por: <%= artigo.user.username+" "+time_ago_in_words(artigo.created_at) %> Atr&aacute;s</small>
             </div>
           </div>
+          <% if artigo.categorias.any? %>
+          <!-- Adicionando Categorias -->
+           <p>Categorias : <%= render artigo.categorias %></p>
+          <% end %>
           <% if logged_in? && ( current_user == artigo.user || current_user.admin? ) %>
           <div class="artigo-actions">
             <%= link_to "Editar", edit_artigo_path(artigo), class: "btn btn-xs btn-primary" %>

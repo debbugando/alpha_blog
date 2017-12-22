@@ -20,6 +20,22 @@ class CategoriasController < ApplicationController
   end
   
   def show
+    @categoria = Categoria.find(params[:id])
+    @categoria_artigos = @categoria.artigos.paginate(page: params[:page], per_page: 5)
+  end
+  
+  def edit
+    @categoria = Categoria.find(params[:id])
+  end
+  
+  def update
+    @categoria = Categoria.find(params[:id])
+    if @categoria.update(categoria_params)
+      flash[:success] = "Categoria Editado com Sucesso"
+    redirect_to categoria_path(@categoria)
+    else
+      render 'edit'
+    end
   end
   
   private
